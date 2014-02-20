@@ -1,0 +1,27 @@
+{
+  "name": "mi6",
+  "version": "0.1.0",
+  "description": "Where great spies are made",
+  "main": "index.js",
+  "scripts": {
+    "test": "./node_modules/.bin/mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/rschmukler/mi6"
+  },
+  "keywords": [
+    "testing",
+    "spies",
+    "mocha"
+  ],
+  "author": "Ryan Schmukler <ryan@slingingcode.com> (http://slingingcode.com/)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/rschmukler/mi6/issues"
+  },
+  "devDependencies": {
+    "mocha": "~1.17.1",
+    "expect.js": "~0.2.0"
+  }
+}
