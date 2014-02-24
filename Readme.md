@@ -1,6 +1,49 @@
 # mi6
 A library for making spies.
 
+## Example
+
+```js
+var Mi6 = require('mi6');
+var spy = Mi6();
+
+spy.returns(25)
+// or
+spy.calls(function() {
+  return 25;
+});
+// or
+var spy = Mi6(someFn);
+spy.callsThrough();
+
+spy(25);
+spy.calledWith() // [25]
+spy.calledWith(25) // true
+spy.callCount() // 1
+
+spy(1, 2, 3);
+spy.calledWith() // [1, 2, 3]
+spy.callCount() // 2
+```
+
+### Building Spies
+
+Mi6 exposes helpers to overwrite methods on objects, and later restore them.
+
+```js
+var Obj = {
+  fn: function() { }
+};
+var Mi6 = require('mi6');
+
+var spy = Mi6(Obj, 'fn');
+
+spy.returns(5);
+Obj.fn(); // returns 5;
+
+Obj.fn.restore() // Restores fn to original fn
+```
+
 
 ### Working with Spies
 
@@ -10,6 +53,7 @@ A library for making spies.
 Makes a spy call `fn`.
 
 ```js
+var Spy = require('mi6').Spy;
 var spy = new Spy();
 var called = false;
 spy.calls(function() { 
