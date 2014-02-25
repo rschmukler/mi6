@@ -17,13 +17,15 @@ var spy = Mi6(someFn);
 spy.callsThrough();
 
 spy(25);
-spy.calledWith() // [25]
-spy.calledWith(25) // true
-spy.callCount() // 1
+
+expect(spy.calledWith(25)).to.be(true);
+expect(spy.calledWith()).to.eql([25]);
+expect(spy.callCount()).to.be(1); // 1
 
 spy(1, 2, 3);
-spy.calledWith() // [1, 2, 3]
-spy.callCount() // 2
+expect(spy.calledWith()).to.eql([1, 2, 3]);
+expect(spy.calledWith(1, 2, 3)).to.be.ok();
+expect(spy.callCount()).to.be(2);
 ```
 
 ### Building Spies
