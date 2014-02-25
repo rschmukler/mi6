@@ -2,7 +2,7 @@ var expect = require('expect.js');
 
 var mi6 = require('../');
 
-describe.only('mi6', function() {
+describe('mi6', function() {
   it('exposes the Spy class', function() {
     expect(mi6.Spy).to.be.a(Function);
   });

@@ -1,6 +1,6 @@
 var expect = require('expect.js');
 
-var Spy = require('../lib/spy.js');
+var Spy = require('../').Spy;
 
 describe('Spy', function() {
   var spy;
