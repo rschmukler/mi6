@@ -47,6 +47,8 @@ Obj.fn.restore() // Restores fn to original fn
 ```
 
 
+If a spy was created this way, you may later restore the original function on the object by calling `spy.restore()`.
+
 ### Working with Spies
 
 #### Configuring Behavior
