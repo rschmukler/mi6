@@ -88,14 +88,17 @@ describe('Spy', function() {
   });
 
   describe('#calledWith', function() {
+    it('throws an error if the spy has not been called', function() {
+      expect(spy.calledWith).to.throwError();
+    });
     it('returns _calledWith with no arguments', function() {
-      spy._calledWith = [1, 2, 3];
+      spy(1, 2, 3);
       expect(spy.calledWith()).to.eql([1, 2, 3]);
     });
 
     describe('with arguments', function() {
-      it('returns false if it has not been called', function() {
-        expect(spy.calledWith(1)).to.be(false);
+      it('throws an error if the spy has not been called', function() {
+        expect(spy.calledWith.bind(this, 1)).to.throwError();
       });
 
       it('returns false if no equality with arguments', function() {
@@ -116,10 +119,11 @@ describe('Spy', function() {
       spy.reset();
       expect(spy.called()).to.be(false);
     });
+
     it('resets _calledWith', function() {
       spy(2);
       spy.reset();
-      expect(spy.calledWith()).to.be(undefined);
+      expect(spy.calledWith).to.throwError();
     });
     it('returns the spy', function() {
       expect(spy.reset()).to.be(spy);

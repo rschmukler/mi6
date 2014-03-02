@@ -60,7 +60,8 @@
   Spy.prototype.calledWith = function () {
     var args = Array.prototype.slice.call(arguments),
         calledWith = this._calledWith;
-    if(calledWith) throw new Error("Attempted to call calledWith() before calling spy");
+
+    if(!calledWith) throw new Error("Attempted to call calledWith() before calling spy");
     if(!args.length) {
       return calledWith;
     } else {
