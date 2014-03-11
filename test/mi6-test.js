@@ -2,7 +2,7 @@ var expect = require('expect.js');
 
 var mi6 = require('../');
 
-describe.only('mi6', function() {
+describe('mi6', function() {
   it('exposes the Spy class', function() {
     expect(mi6.Spy).to.be.a(Function);
   });
@@ -19,6 +19,19 @@ describe.only('mi6', function() {
       };
       var spy = mi6(obj, 'fn');
       expect(obj.fn).to.be(spy);
+    });
+
+    it('maintains context', function() {
+      var obj = {
+        name: 'Tom',
+        fnA: function() { this.fnB(this.name); },
+        fnB: function(name) { }
+      };
+
+      mi6(obj, 'fnA').callsThrough();
+      var fnB = mi6(obj, 'fnB').callsThrough();
+      obj.fnA();
+      expect(fnB.calledWith()).to.eql(['Tom']);
     });
 
     it('exposes a restore method on a spy', function() {
