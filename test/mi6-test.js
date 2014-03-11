@@ -21,6 +21,19 @@ describe('mi6', function() {
       expect(obj.fn).to.be(spy);
     });
 
+    it('maintains context', function() {
+      var obj = {
+        name: 'Tom',
+        fn: function() { this.fnA(this.name); },
+        fnA: function() { }
+      };
+
+      mi6(obj, 'fn').callsThrough();
+      var fnA = mi6(obj, 'fnA');
+      obj.fn();
+      expect(fnA.calledWith()).to.eql(['Tom']);
+    });
+
     it('exposes a restore method on a spy', function() {
       var obj = {
         fn: function() { }

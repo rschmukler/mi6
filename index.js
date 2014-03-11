@@ -4,7 +4,7 @@
     if(!target) return new Spy(obj);
 
     var original = obj[target];
-    var spy = new Spy(obj[target]);
+    var spy = new Spy(obj[target], obj);
     obj[target] = spy;
 
     spy.restore = function() {
