@@ -32,6 +32,23 @@ describe('mi6', function() {
       var fnA = mi6(obj, 'fnA');
       obj.fn();
       expect(fnA.calledWith()).to.eql(['Tom']);
+
+      var User = function() {
+        this.name = 'Bob';
+      };
+
+      User.prototype.sayName = function() {
+        this.say(this.name);
+      };
+
+      User.prototype.say = function(name) {
+      };
+
+      var bob = new User();
+      mi6(User.prototype, 'sayName').callsThrough();
+      var say = mi6(User.prototype, 'say').callsThrough();
+      bob.sayName();
+      expect(say.calledWith()).to.eql(['Bob']);
     });
 
     it('exposes a restore method on a spy', function() {

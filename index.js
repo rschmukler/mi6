@@ -20,10 +20,12 @@
       spy._calledWith = args;
       spy._called++;
       if(spy._fn && spy._returns) throw new Error("Ambiguous configuration, #calls and #returns called");
-      if(spy._fn) return spy._fn.apply(this, args);
+      if(spy._fn) {
+        var target = (ctx && ctx.isPrototypeOf(this)) ? this : ctx;
+        return spy._fn.apply(target, args);
+      }
       if(spy._returns) return spy._returns;
     };
-    spy = spy.bind(ctx || spy);
     spy._original = fn;
     spy._called = 0;
     mixin(spy, Spy.prototype);
