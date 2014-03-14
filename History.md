@@ -1,4 +1,9 @@
 
+0.3.0 / 2014-03-14 
+==================
+
+ * switch calledWith to a short hand when called without arguments
+
 0.2.2 / 2014-03-11 
 ==================
 
