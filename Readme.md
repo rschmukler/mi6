@@ -19,8 +19,11 @@ spy.callsThrough();
 spy(25);
 
 expect(spy.calledWith(25)).to.be(true);
-expect(spy.calledWith()).to.eql([25]);
-expect(spy.callCount()).to.be(1); // 1
+expect(spy.calledWith()).to.be(25);
+expect(spy.called()).to.be(true);
+
+spy();
+expect(spy.calledWith()).to.be(undefined);
 
 spy(1, 2, 3);
 expect(spy.calledWith()).to.eql([1, 2, 3]);
