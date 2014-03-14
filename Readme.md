@@ -1,4 +1,6 @@
 # mi6
+[![Build Status](https://api.travis-ci.org/rschmukler/mi6.png)](http://travis-ci.org/rschmukler/mi6)
+
 A library for making spies.
 
 ## Example
