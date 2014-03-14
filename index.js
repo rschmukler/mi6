@@ -65,6 +65,8 @@
 
     if(!calledWith) throw new Error("Attempted to call calledWith() before calling spy");
     if(!args.length) {
+      if(calledWith.length === 0) return undefined;
+      else if(calledWith.length == 1) return calledWith[0];
       return calledWith;
     } else {
       if(!this._called) return false;

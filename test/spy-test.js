@@ -91,6 +91,14 @@ describe('Spy', function() {
     it('throws an error if the spy has not been called', function() {
       expect(spy.calledWith).to.throwError();
     });
+
+    it('returns a single item if only zero or one argument', function() {
+      spy();
+      expect(spy.calledWith()).to.be(undefined);
+      spy(1);
+      expect(spy.calledWith()).to.be(1);
+    });
+
     it('returns _calledWith with no arguments', function() {
       spy(1, 2, 3);
       expect(spy.calledWith()).to.eql([1, 2, 3]);
