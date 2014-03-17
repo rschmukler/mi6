@@ -24,7 +24,7 @@
         var target = (ctx && ctx.isPrototypeOf(this)) ? this : ctx;
         return spy._fn.apply(target, args);
       }
-      if(spy._returns) return spy._returns;
+      if(spy._returns !== undefined) return spy._returns;
     };
     spy._original = fn;
     spy._called = 0;

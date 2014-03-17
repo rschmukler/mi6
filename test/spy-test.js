@@ -66,6 +66,12 @@ describe('Spy', function() {
       expect(result).to.be(1);
     });
 
+    it('works with falsy values', function() {
+      spy.returns(0);
+      var result = spy();
+      expect(result).to.be(0);
+    });
+
     it('returns the spy', function() {
       expect(spy.returns()).to.be(spy);
     });
