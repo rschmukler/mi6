@@ -14,7 +14,8 @@ spy.returns(25)
 spy.calls(function() {
   return 25;
 });
-// or
+```
+```js
 var spy = Mi6(someFn);
 spy.callsThrough();
 
